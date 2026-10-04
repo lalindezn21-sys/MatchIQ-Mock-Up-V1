@@ -34,6 +34,25 @@
       height: 30px;
     }
 
+    .brand-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-item::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 6px);
+      width: 6px;
+      height: 6px;
+      border-right: 1px solid rgba(70, 70, 70, 0.4);
+      border-bottom: 1px solid rgba(70, 70, 70, 0.4);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
     .nfl-logo,
     .mlb-logo,
     .nba-logo {
@@ -110,11 +129,19 @@
 <body>
   <nav class="nav">
     <div class="brand">
-      <img class="nfl-logo" src="NFL.svg" alt="NFL">
-      <img class="mlb-logo" src="MLB.webp" alt="MLB">
+      <div class="brand-item">
+        <img class="nfl-logo" src="NFL.svg" alt="NFL">
+      </div>
+      <div class="brand-item">
+        <img class="mlb-logo" src="MLB.webp" alt="MLB">
+      </div>
       <h1 class="logo">matchIQ</h1>
-      <img class="nba-logo" src="NBA Logo" alt="NBA">
-      <img class="ufc-logo" src="UFC_Logo.svg" alt="UFC">
+      <div class="brand-item">
+        <img class="nba-logo" src="NBA Logo" alt="NBA">
+      </div>
+      <div class="brand-item">
+        <img class="ufc-logo" src="UFC_Logo.svg" alt="UFC">
+      </div>
     </div>
 
     <div class="menu">
