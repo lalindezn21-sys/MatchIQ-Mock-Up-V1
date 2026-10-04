@@ -1,264 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MatchIQ</title>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatchIQ Pro - AI Sports Intelligence</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      background: #fff;
-      overflow: hidden;
-    }
-
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     body {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .nav {
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      height: 30px;
-    }
-
-    .brand-item {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nfl-logo,
-    .mlb-logo,
-    .nba-logo {
-      display: block;
-      width: auto;
-      height: 36px;
-      object-fit: contain;
-    }
-
-    .mlb-logo {
-      height: 24px;
-      margin-right: 28px;
-    }
-
-    .nba-logo {
-      margin-left: 28px;
-    }
-
-    .ufc-logo {
-      display: block;
-      width: auto;
-      height: 21px;
-      object-fit: contain;
-    }
-
-    .credits {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 1;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #111;
-      white-space: nowrap;
-    }
-
-    .credits-by {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0;
-      margin-bottom: 10px;
-    }
-
-    .credits-name {
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: -0.6px;
-      margin-bottom: 22px;
-    }
-
-    .credits-with {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0;
-      margin-bottom: 10px;
-    }
-
-    .credits-line {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: -0.1px;
-    }
-
-    .bottom-logo {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 24vw;
-      font-weight: 600;
-      letter-spacing: -0.07em;
-      line-height: 0.72;
-      height: auto;
-      overflow: visible;
-      white-space: nowrap;
-      color: #111;
-      z-index: 0;
-      clip-path: inset(0 0 0 0);
-    }
-
-    .logo {
-      display: block;
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 30px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      line-height: 1;
-      white-space: nowrap;
-      cursor: pointer;
-      position: relative;
-      z-index: 2;
-    }
-
-    .menu {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 12px auto 0;
-      overflow: hidden;
-      height: 0;
-    }
-
-    .menu-item {
-      position: relative;
-      display: block;
-      padding: 0 14px;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #111;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: -0.25px;
-      line-height: 1;
-      opacity: 0;
-      transform: translateY(-8px);
-    }
-
-    .menu-item + .menu-item::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 1px;
-      height: 12px;
-      background: rgba(70, 70, 70, 0.4);
-      transform: translateY(-50%);
+      font-family: 'Inter', sans-serif;
     }
   </style>
 </head>
-<body>
-  <nav class="nav">
-    <div class="brand">
-      <div class="brand-item">
-        <img class="nfl-logo" src="NFL.svg" alt="NFL">
+<body class="bg-[#0A0D14] text-slate-100 antialiased min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="border-b border-slate-800/80 bg-[#0E131F]/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+          <i data-lucide="zap" class="h-5 w-5 text-slate-950 stroke-[2.5]"></i>
+        </div>
+        <div class="flex items-baseline gap-1.5">
+          <span class="font-extrabold text-xl tracking-tight text-white">
+            Match<span class="text-emerald-400">IQ</span>
+          </span>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            PRO 2.0
+          </span>
+        </div>
       </div>
-      <div class="brand-item">
-        <img class="mlb-logo" src="MLB.webp" alt="MLB">
+
+      <!-- Search Bar -->
+      <div class="flex-1 max-w-md hidden md:block">
+        <div class="relative">
+          <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500"></i>
+          <input
+            type="text"
+            placeholder="Search teams, leagues, or smart insights..."
+            class="w-full bg-slate-900/90 border border-slate-800 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition"
+          />
+        </div>
       </div>
-      <h1 class="logo">matchIQ</h1>
-      <div class="brand-item">
-        <img class="nba-logo" src="NBA Logo" alt="NBA">
-      </div>
-      <div class="brand-item">
-        <img class="ufc-logo" src="UFC_Logo.svg" alt="UFC">
+
+      <!-- Header Controls -->
+      <div class="flex items-center gap-3">
+        <button class="p-2 rounded-lg border border-slate-800 bg-slate-900/50 text-slate-400 hover:text-slate-200 transition">
+          <i data-lucide="bell" class="h-4 w-4"></i>
+        </button>
+        <button class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm shadow-md shadow-emerald-500/10 transition">
+          Upgrade to Ultra
+        </button>
       </div>
     </div>
+  </header>
 
-    <div class="menu">
-      <a class="menu-item" href="#">SIGN IN</a>
-      <a class="menu-item" href="#">ANALYTICS</a>
-      <a class="menu-item" href="#">HEDGE</a>
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Top Metric Overview Cards -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between">
+        <div>
+          <p class="text-xs font-medium text-slate-400">Active AI Signals</p>
+          <p class="text-xl font-bold text-slate-100 mt-1">14 Live</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">+3 in last hour</p>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+          <i data-lucide="sparkles" class="h-5 w-5 text-emerald-400"></i>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between">
+        <div>
+          <p class="text-xs font-medium text-slate-400">Win Rate Accuracy</p>
+          <p class="text-xl font-bold text-slate-100 mt-1">84.2%</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">Based on 1,200+ matches</p>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+          <i data-lucide="trending-up" class="h-5 w-5 text-teal-400"></i>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between">
+        <div>
+          <p class="text-xs font-medium text-slate-400">Live Tracked Matches</p>
+          <p class="text-xl font-bold text-slate-100 mt-1">38 Games</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">Across 12 global leagues</p>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+          <i data-lucide="activity" class="h-5 w-5 text-sky-400"></i>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between">
+        <div>
+          <p class="text-xs font-medium text-slate-400">Avg. Value Return</p>
+          <p class="text-xl font-bold text-slate-100 mt-1">+18.4%</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">Alpha over consensus odds</p>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+          <i data-lucide="bar-chart-3" class="h-5 w-5 text-indigo-400"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Match Feed Section -->
+      <div class="lg:col-span-7 space-y-4">
+        
+        <!-- Filter Header -->
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div class="flex gap-2">
+            <button class="px-3.5 py-1.5 rounded-lg text-sm font-medium bg-slate-800 text-emerald-400 border border-emerald-500/30">
+              All Matches
+            </button>
+            <button class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-200">
+              Live Now
+            </button>
+            <button class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-200">
+              Upcoming
+            </button>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-slate-400">
+            <i data-lucide="sliders-horizontal" class="h-3.5 w-3.5"></i>
+            <span>Sort by Confidence</span>
+          </div>
+        </div>
+
+        <!-- Match Cards List -->
+        <div class="space-y-4">
+          
+          <!-- Match Card 1 (Active) -->
+          <div class="p-5 rounded-xl border bg-slate-900 border-emerald-500/50 ring-1 ring-emerald-500/30 shadow-lg shadow-emerald-500/5 transition cursor-pointer">
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+              <span class="font-semibold text-slate-300">Premier League</span>
+              <span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 font-semibold border border-rose-500/20 animate-pulse">
+                <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                LIVE 68'
+              </span>
+            </div>
+
+            <div class="grid grid-cols-3 items-center mb-5">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🔴</span>
+                <span class="font-bold text-sm sm:text-base text-slate-100">Arsenal</span>
+              </div>
+              <div class="text-center font-mono font-bold text-lg text-slate-200">
+                <span class="bg-slate-950 px-3 py-1 rounded-md border border-slate-800">2 - 1</span>
+              </div>
+              <div class="flex items-center justify-end gap-3">
+                <span class="font-bold text-sm sm:text-base text-slate-100">Chelsea</span>
+                <span class="text-2xl">🔵</span>
+              </div>
+            </div>
+
+            <div class="bg-slate-950/60 rounded-lg p-3 border border-slate-800/60 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <i data-lucide="sparkles" class="h-4 w-4 text-emerald-400 shrink-0"></i>
+                <span class="text-xs text-slate-300">
+                  <strong class="text-emerald-400 font-semibold">Over 2.5 Goals</strong> — High xG flow in 2nd half. Chelsea pushing high line.
+                </span>
+              </div>
+              <span class="text-xs font-mono font-bold text-emerald-400 shrink-0">88% CONF.</span>
+            </div>
+          </div>
+
+          <!-- Match Card 2 -->
+          <div class="p-5 rounded-xl border bg-slate-900/50 border-slate-800/80 hover:border-slate-700 transition cursor-pointer">
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+              <span class="font-semibold text-slate-300">Bundesliga</span>
+              <span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 font-semibold border border-rose-500/20 animate-pulse">
+                <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                LIVE 41'
+              </span>
+            </div>
+
+            <div class="grid grid-cols-3 items-center mb-5">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🔴</span>
+                <span class="font-bold text-sm sm:text-base text-slate-100">Leverkusen</span>
+              </div>
+              <div class="text-center font-mono font-bold text-lg text-slate-200">
+                <span class="bg-slate-950 px-3 py-1 rounded-md border border-slate-800">0 - 0</span>
+              </div>
+              <div class="flex items-center justify-end gap-3">
+                <span class="font-bold text-sm sm:text-base text-slate-100">Bayern Munich</span>
+                <span class="text-2xl">🔴</span>
+              </div>
+            </div>
+
+            <div class="bg-slate-950/60 rounded-lg p-3 border border-slate-800/60 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <i data-lucide="sparkles" class="h-4 w-4 text-emerald-400 shrink-0"></i>
+                <span class="text-xs text-slate-300">
+                  <strong class="text-emerald-400 font-semibold">BTTS - Yes</strong> — Bayern xG surging. High goal likelihood before 75'.
+                </span>
+              </div>
+              <span class="text-xs font-mono font-bold text-emerald-400 shrink-0">81% CONF.</span>
+            </div>
+          </div>
+
+          <!-- Match Card 3 -->
+          <div class="p-5 rounded-xl border bg-slate-900/50 border-slate-800/80 hover:border-slate-700 transition cursor-pointer">
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+              <span class="font-semibold text-slate-300">La Liga</span>
+              <span class="flex items-center gap-1 text-slate-400 font-medium">
+                <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+                21:00
+              </span>
+            </div>
+
+            <div class="grid grid-cols-3 items-center mb-5">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">⚪</span>
+                <span class="font-bold text-sm sm:text-base text-slate-100">Real Madrid</span>
+              </div>
+              <div class="text-center font-mono font-bold text-xs text-slate-500 tracking-wider">
+                VS
+              </div>
+              <div class="flex items-center justify-end gap-3">
+                <span class="font-bold text-sm sm:text-base text-slate-100">Barcelona</span>
+                <span class="text-2xl">🔵🔴</span>
+              </div>
+            </div>
+
+            <div class="bg-slate-950/60 rounded-lg p-3 border border-slate-800/60 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <i data-lucide="sparkles" class="h-4 w-4 text-emerald-400 shrink-0"></i>
+                <span class="text-xs text-slate-300">
+                  <strong class="text-emerald-400 font-semibold">Real Madrid Win</strong> — Barcelona missing key starters. Home edge +22%.
+                </span>
+              </div>
+              <span class="text-xs font-mono font-bold text-emerald-400 shrink-0">76% CONF.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Detail Analytics Sidebar -->
+      <div class="lg:col-span-5">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 sticky top-24 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <h3 class="font-semibold text-slate-200 flex items-center gap-2">
+              <i data-lucide="bar-chart-3" class="h-4 w-4 text-emerald-400"></i>
+              Live MatchIQ Analytics
+            </h3>
+            <span class="text-xs text-slate-500 font-mono">UPDATED LIVE</span>
+          </div>
+
+          <!-- Selected Match Info -->
+          <div class="text-center py-2">
+            <p class="text-xs text-slate-400 uppercase tracking-widest font-semibold mb-1">Premier League</p>
+            <h4 class="text-lg font-bold text-slate-100">Arsenal vs Chelsea</h4>
+          </div>
+
+          <!-- Win Probabilities -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs text-slate-400 font-medium">
+              <span>Win Probabilities</span>
+              <span class="text-slate-300">Home 62% | Draw 22% | Away 16%</span>
+            </div>
+            <div class="h-2.5 w-full bg-slate-950 rounded-full flex overflow-hidden p-0.5 border border-slate-800">
+              <div style="width: 62%" class="bg-emerald-500 rounded-l-full"></div>
+              <div style="width: 22%" class="bg-slate-600"></div>
+              <div style="width: 16%" class="bg-teal-400 rounded-r-full"></div>
+            </div>
+          </div>
+
+          <!-- Pressure Momentum -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs text-slate-400 font-medium">
+              <span>Live Momentum</span>
+              <span class="text-emerald-400 font-mono">74% - 26%</span>
+            </div>
+            <div class="h-2.5 w-full bg-slate-950 rounded-full flex overflow-hidden p-0.5 border border-slate-800">
+              <div style="width: 74%" class="bg-sky-500"></div>
+              <div style="width: 26%" class="bg-rose-500"></div>
+            </div>
+          </div>
+
+          <!-- AI Signal Highlight Box -->
+          <div class="p-4 rounded-xl bg-slate-950 border border-emerald-500/20 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                STRONG BUY
+              </span>
+              <span class="text-xs text-slate-400">Confidence: <strong class="text-emerald-400">88%</strong></span>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-slate-200">Target Market: Over 2.5 Goals</div>
+              <p class="text-xs text-slate-400 mt-1">
+                High xG flow in 2nd half. Chelsea pushing high line trying to equalize, exposing counter-attack channels.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <button class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium text-sm rounded-lg flex items-center justify-center gap-2 transition">
+            <span>View Deep Data Breakdown</span>
+            <i data-lucide="chevron-right" class="h-4 w-4"></i>
+          </button>
+        </div>
+      </div>
+
     </div>
-  </nav>
+  </main>
 
-  <div class="credits">
-    <div class="credits-by">BY</div>
-    <div class="credits-name">JOSHUA CEVALLOS</div>
-    <div class="credits-with">WITH</div>
-    <div class="credits-line">CREATIVE USER EXPERIENCE BY NOAH LALINDEZ AND PJ III</div>
-  </div>
-
-  <div class="bottom-logo">matchIQ</div>
-
+  <!-- Initialize Lucide Icons -->
   <script>
-    const nav = document.querySelector('.nav');
-    const menu = document.querySelector('.menu');
-    const items = document.querySelectorAll('.menu-item');
-
-    const openMenu = () => {
-      gsap.killTweensOf([menu, ...items]);
-      gsap.to(menu, {
-        height: 28,
-        duration: 0.45,
-        ease: "power3.out"
-      });
-      gsap.to(items, {
-        opacity: 1,
-        y: 0,
-        duration: 0.35,
-        stagger: 0.08,
-        delay: 0.08,
-        ease: "power2.out"
-      });
-    };
-
-    const closeMenu = () => {
-      gsap.killTweensOf([menu, ...items]);
-      gsap.to(items, {
-        opacity: 0,
-        y: -8,
-        duration: 0.2,
-        stagger: 0.04,
-        ease: "power2.in"
-      });
-      gsap.to(menu, {
-        height: 0,
-        duration: 0.35,
-        delay: 0.08,
-        ease: "power3.inOut"
-      });
-    };
-
-    const nav = document.querySelector('.nav');
-    const logo = document.querySelector('.logo');
-
-    nav.addEventListener('mouseenter', openMenu);
-    nav.addEventListener('mouseleave', (event) => {
-      if (!nav.contains(event.relatedTarget)) {
-        gsap.delayedCall(0.18, () => {
-          if (!nav.matches(':hover')) closeMenu();
-        });
-      }
-    });
+    lucide.createIcons();
   </script>
 </body>
 </html>
