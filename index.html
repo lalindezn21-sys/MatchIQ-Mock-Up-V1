@@ -39,16 +39,18 @@
     }
 
     .menu {
-      width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 12px auto 0;
       overflow: hidden;
       height: 0;
     }
 
     .menu-item {
+      position: relative;
       display: block;
-      padding: 9px 0;
-      border-top: 1px solid #111;
+      padding: 0 14px;
       color: #111;
       text-decoration: none;
       font-size: 13px;
@@ -58,8 +60,15 @@
       transform: translateY(-8px);
     }
 
-    .menu-item:last-child {
-      border-bottom: 1px solid #111;
+    .menu-item + .menu-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 1px;
+      height: 12px;
+      background: #111;
+      transform: translateY(-50%);
     }
   </style>
 </head>
@@ -83,7 +92,7 @@
     const openMenu = () => {
       gsap.killTweensOf([menu, ...items]);
       gsap.to(menu, {
-        height: 118,
+        height: 28,
         duration: 0.45,
         ease: "power3.out"
       });
