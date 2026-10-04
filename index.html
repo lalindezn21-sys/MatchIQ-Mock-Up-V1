@@ -66,6 +66,45 @@
       object-fit: contain;
     }
 
+    .credits {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #111;
+      white-space: nowrap;
+    }
+
+    .credits-by {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 10px;
+    }
+
+    .credits-name {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      margin-bottom: 22px;
+    }
+
+    .credits-with {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 10px;
+    }
+
+    .credits-line {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
+    }
+
     .bottom-logo {
       position: fixed;
       left: 0;
@@ -77,12 +116,13 @@
       font-size: 24vw;
       font-weight: 600;
       letter-spacing: -0.07em;
-      line-height: 0.62;
-      height: 24vw;
+      line-height: 0.72;
+      height: auto;
       overflow: visible;
       white-space: nowrap;
       color: #111;
       z-index: 0;
+      clip-path: inset(0 0 0 0);
     }
 
     .logo {
@@ -160,6 +200,13 @@
     </div>
   </nav>
 
+  <div class="credits">
+    <div class="credits-by">BY</div>
+    <div class="credits-name">JOSHUA CEVALLOS</div>
+    <div class="credits-with">WITH</div>
+    <div class="credits-line">CREATIVE USER EXPERIENCE BY NOAH LALINDEZ AND PJ III</div>
+  </div>
+
   <div class="bottom-logo">matchIQ</div>
 
   <script>
@@ -201,10 +248,17 @@
       });
     };
 
+    const nav = document.querySelector('.nav');
     const logo = document.querySelector('.logo');
 
-    logo.addEventListener('mouseenter', openMenu);
-    logo.addEventListener('mouseleave', closeMenu);
+    nav.addEventListener('mouseenter', openMenu);
+    nav.addEventListener('mouseleave', (event) => {
+      if (!nav.contains(event.relatedTarget)) {
+        gsap.delayedCall(0.18, () => {
+          if (!nav.matches(':hover')) closeMenu();
+        });
+      }
+    });
   </script>
 </body>
 </html>
