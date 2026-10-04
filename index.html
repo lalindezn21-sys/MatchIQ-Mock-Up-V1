@@ -41,26 +41,6 @@
       justify-content: center;
     }
 
-    .brand-item::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: calc(100% + 6px);
-      width: 6px;
-      height: 6px;
-      border-right: 1px solid rgba(70, 70, 70, 0.4);
-      border-bottom: 1px solid rgba(70, 70, 70, 0.4);
-      transform: translateX(-50%) rotate(45deg);
-    }
-
-    .brand-item:nth-child(2)::after {
-      transform: translateX(calc(-50% - 14px)) rotate(45deg);
-    }
-
-    .brand-item:nth-child(4)::after {
-      transform: translateX(calc(-50% + 14px)) rotate(45deg);
-    }
-
     .nfl-logo,
     .mlb-logo,
     .nba-logo {
@@ -97,7 +77,9 @@
       font-size: 24vw;
       font-weight: 600;
       letter-spacing: -0.07em;
-      line-height: 0.72;
+      line-height: 0.62;
+      height: 24vw;
+      overflow: visible;
       white-space: nowrap;
       color: #111;
       z-index: 0;
@@ -113,6 +95,8 @@
       line-height: 1;
       white-space: nowrap;
       cursor: pointer;
+      position: relative;
+      z-index: 2;
     }
 
     .menu {
@@ -217,8 +201,10 @@
       });
     };
 
-    nav.addEventListener('mouseenter', openMenu);
-    nav.addEventListener('mouseleave', closeMenu);
+    const logo = document.querySelector('.logo');
+
+    logo.addEventListener('mouseenter', openMenu);
+    logo.addEventListener('mouseleave', closeMenu);
   </script>
 </body>
 </html>
